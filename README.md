@@ -1,6 +1,8 @@
 
 # Brandon's Coin Counter
 
+[www.brandonscoincounter.com](www.brandonscoincounter.com)
+
 #### Description:
 
 ##### Web Application Description
@@ -27,4 +29,5 @@ The most challenging parts of building this application came while learning Java
 
 Flask==2.1.0; python_version > '3.6'
 Flask==2.0.3; python_version < '3.7'
+gunicorn==20.1.0
 
