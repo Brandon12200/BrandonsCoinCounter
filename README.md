@@ -1,5 +1,5 @@
-# BrandonsCoinCounter
-A Flask web application to build better spending habits
+
+# Brandon's Coin Counter
 
 #### Description:
 

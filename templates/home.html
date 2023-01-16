@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <!-- Page where users can input their full budget -->
+
+    <h3>Calculate how you are spending your monthly income!</h3>
+
+    <h4>Input your monthly income and expenses.</h4>
+
+    <div class="center">
+
+    <form action="/" method="post">
+        <div class="form-group">
+            <label for="income">Monthly Income: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="income" name="income" placeholder="Monthly Income" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="Housing">Housing: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="housing" name="housing" placeholder="Housing" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="food">Food: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="food" name="food" placeholder="Food" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="transportation">Transportation: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="transportation" name="transportation" placeholder="Transportation" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="saving">Saving: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="saving" name="saving" placeholder="Saving" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="debt_payments">Debt Payments: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="debt_payments" name="debt_payments" placeholder="Debt Payments" type="number" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="other">Other: $</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="other" name="other" placeholder="Other" type="number" step="0.01">
+        </div>
+        <div class="center-button">
+            <button class="btn btn-primary" type="submit">Calculate</button>
+        </div>
+      </form>
+
+    </div>
+
+{% endblock %}

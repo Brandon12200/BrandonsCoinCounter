@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Debt Planner
+{% endblock %}
+
+{% block main %}
+
+<!-- Chart which displays recommended plan to pay off debt item -->
+
+<h5>Including interest, about {{ total_amount| usd }} will be paid after {{ time }} {{ head_unit }}.</h5>
+
+<h5>To meet your goal, it is reasonable to pay {{ monthly_payment| usd }} each month.</h5>
+
+
+<table class="table" style="width:80%">
+    <tbody>
+      <tr>
+        <th scope="col">{{ display_unit }}</th>
+        <th scope="col">Paid to Date</th>
+        <th scope="col">Balance Remaining</th>
+      </tr>
+      {% for row in iteration %}
+      <tr>
+            <td>{{ row["counter"] }}</td>
+            <td>{{ row["paid_to_date"]| usd  }}</td>
+            <td>{{ row["balance"]| usd  }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+<div id="lineGraphContainer" style="padding-left: 335px; padding-right: 335px">
+    <canvas id="lineGraph" style="width: 50%; height: 100%; background-color: transparent;"></canvas>
+</div>
+
+<script>
+    var iteration = {{ iteration|tojson|safe }};
+    window.onload = function() {
+    labels = []
+    data = []
+
+    for (var i = 0; i < {{length}}; i++){
+            labels.push(iteration[i]["counter"]);
+            data.push(iteration[i]["balance"]);
+    }
+
+    console.log(labels);
+    console.log(data);
+
+
+    const config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '',
+                data: data,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 5,
+                tension: 0.1
+            }]
+        },
+        options: {
+            tooltips: {
+            enabled: false
+        },
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    id: 'Balance Remaining',
+                    type: 'linear',
+                    position: 'left',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Balance Remaining'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    id: '{{ head_unit }}',
+                    scaleLabel: {
+                        display: true,
+                        labelString: '{{ display_unit }}'
+                    }
+                }]
+            }
+        }
+    };
+
+
+        var ctx = document.getElementById('lineGraph').getContext('2d');
+
+        var chart = new Chart(ctx, config);
+
+
+
+    }
+
+    </script>
+
+    <p style="text-align: center;">*As the balance is paid off, the amount of interest accrued will change. Therefore, these suggestions are estimates.</p>
+
+{% endblock %}

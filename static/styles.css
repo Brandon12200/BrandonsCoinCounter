@@ -1,0 +1,80 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+footer {
+    background-color: #f3f3f3;
+    color: #000000;
+  }
+
+nav {
+    color: #000000;
+    height: 120px;
+  }
+
+.nav-link {
+    font-size: 18px;
+  }
+
+h3, h4, h5{
+    padding: 15px;
+    text-align: center;
+  }
+
+.form-group label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 18px;
+  }
+
+.form-group input {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.center {
+    display: flex; /* Create a flex container */
+    justify-content: center; /* Center the elements horizontally */
+    align-items: center; /* Center the elements vertically */
+  }
+
+.center-button {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 19px;
+}
+
+.about {
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 17px;
+
+}
+
+.suggestion {
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 17px;
+  text-align: center;
+  padding: 10px;
+
+}
+
+.suggestion_head {
+  padding: 10px;
+
+}
+
+#barGraphContainer {
+  width: 800px;
+  transform: translateX(40%);
+}

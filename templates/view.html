@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View Budget
+{% endblock %}
+
+{% block main %}
+        <!-- Display imputed budget in table with percentages of each budget item -->
+<h5>Monthly Income: {{ income | usd  }}</h5>
+<table class="table" style="width:80%">
+  <tbody>
+    <tr>
+      <th scope="col">Expense</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Percentage of Monthly Spending</th>
+    </tr>
+    <tr>
+      <td>Housing</td>
+      <td>
+        <div>
+          <div>{{ housing | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ housing_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Food</td>
+      <td>
+        <div>
+        <div>{{ food | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ food_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>
+        <div>
+        <div>{{ transportation | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ transportation_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Saving</td>
+      <td>
+        <div>
+        <div>{{ saving | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ saving_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Debt Payments</td>
+      <td>
+        <div>
+          <div>{{ debt_payments | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ debt_payments_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Other</td>
+      <td>
+        <div>
+        <div>{{ other | usd  }}</div>
+        </div>
+      </td>
+      <td>{{ other_percent }}%</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <!-- JavaScript for pie chart displaying percentages and suggestions for improvement -->
+<script>
+  window.onload = function() {
+    const data = {
+      labels: [
+        'Housing',
+        'Food',
+        'Transportation',
+        'Saving',
+        'Debt Payments',
+        'Other',
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [{{ housing_percent }}, {{ food_percent }}, {{ transportation_percent }}, {{ saving_percent }}, {{ debt_payments_percent }}, {{ other_percent }}],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(24, 152, 135)',
+          'rgb(65, 25, 186)',
+          'rgb(39, 65, 126)'
+        ]
+      }]
+    };
+
+    const config = {
+      type: 'pie',
+      data: data,
+    };
+
+    function createPieChart() {
+      // get the pie chart canvas element
+      var ctx = document.getElementById('pieChart').getContext('2d');
+
+      // create the pie chart using Chart.js
+      var pieChart = new Chart(ctx, config);
+    }
+
+    // call the function to create the pie chart
+    createPieChart();
+
+    if ( (({{ saving_percent }} + {{ debt_payments_percent }}) >= 20.00) && (({{ housing_percent }} + {{ food_percent }} + {{ transportation_percent }}) <= 50.00) && ({{ other_percent }} <= 30.00)) {
+      document.getElementById("demo_none").innerHTML = "• No new suggestions! Keep up the good work!";
+    }
+
+    if (({{ saving_percent }} + {{ debt_payments_percent }}) < 20.00) {
+      document.getElementById("demo").innerHTML = "• It is recommended that 20% of your income be devoted to saving and paying off debt.";
+    }
+
+    if (({{ housing_percent }} + {{ food_percent }} + {{ transportation_percent }}) > 50.00) {
+      document.getElementById("demo2").innerHTML = "• It is recommended that only 50% of your income be devoted to housing, food, and transportation.";
+    }
+
+    if ({{ other_percent }} > 30.00) {
+      document.getElementById("demo3").innerHTML = "• Only if one's necessities are especially inexpensive should their other catagory be greater than 30%.";
+    }
+
+    if (({{ housing_percent }} + {{ food_percent }} + {{ transportation_percent }} + {{ saving_percent }} + {{ debt_payments_percent }} + {{ other_percent }}) > 100.00) {
+      document.getElementById("demo4").innerHTML = "• It is recommended that monthly expenses not be greater than monthly income.";
+    }
+  }
+
+</script>
+
+<div id="pieChartContainer">
+  <canvas id="pieChart" style="width: 50%; height: 50%;"></canvas>
+</div>
+
+<div>
+  <p id="demo" class="suggestion"></p>
+  <p id="demo4" class="suggestion"></p>
+  <p id="demo2" class="suggestion"></p>
+  <p id="demo3" class="suggestion"></p>
+  <p id="demo_none" class="suggestion"></p>
+</div>
+
+
+{% endblock %}

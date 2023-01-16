@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Budget Builder
+{% endblock %}
+
+{% block main %}
+
+      <!-- Page where users can input a piece of their budget -->
+
+    <h3>Calculate a monthly budget for your needs!</h3>
+
+    <h4>Input a monthly income or expense and we'll deliver a reasonable budget.</h4>
+
+    <div class="center">
+
+        <form action="/builder" method="post">
+              <legend>Budget Builder Calculator</legend>
+              <div class="mb-3">
+                <label for="builder_select" class="form-label">Select Budget Item:</label>
+                <select id="builder_select" name="builder_select" class="form-select">
+                  <option value="1">Select Budget Item</option>
+                  <option value="2">Income</option>
+                  <option value="3">Housing</option>
+                  <option value="4">Food</option>
+                  <option value="5">Transportation</option>
+                  <option value="6">Saving/Debt Payments</option>
+                  <option value="7">Other</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="builder_value" class="form-label">Value of Item:</label>
+                <input type="number" step="0.01" id="builder_value" name="builder_value" class="form-control" placeholder="Dollar Value">
+              </div>
+              <button type="submit" class="btn btn-primary">Calculate</button>
+          </form>
+    </div>
+
+{% endblock %}

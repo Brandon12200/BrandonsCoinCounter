@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View Budget
+{% endblock %}
+
+{% block main %}
+
+<!-- Chart which displays recommended budget -->
+
+<h5>Recommended Monthly Income: {{ income | usd }}</h5>
+<table class="table" style="width:80%">
+  <tbody>
+    <tr>
+      <th scope="col">Expense</th>
+      <th scope="col">Recommended Amount</th>
+      <th scope="col">Recommended Percentage of Monthly Spending</th>
+    </tr>
+    <tr>
+      <td>Housing</td>
+      <td>
+        <div>
+          <div>{{ housing | usd }}</div>
+        </div>
+      </td>
+      <td>{{ housing_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Food</td>
+      <td>
+        <div>
+        <div>{{ food | usd }}</div>
+        </div>
+      </td>
+      <td>{{ food_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>
+        <div>
+        <div>{{ transportation | usd }}</div>
+        </div>
+      </td>
+      <td>{{ transportation_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Saving and Debt Payments</td>
+      <td>
+        <div>
+        <div>{{ saving | usd }}</div>
+        </div>
+      </td>
+      <td>{{ saving_percent }}%</td>
+    </tr>
+    <tr>
+      <td>Other</td>
+      <td>
+        <div>
+        <div>{{ other | usd }}</div>
+        </div>
+      </td>
+      <td>{{ other_percent }}%</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Javascript for bar graph displaying recommended percentages of each budget item  -->
+<script>
+    window.onload = function() {
+      const data = {
+        labels: [
+          'Housing',
+          'Food',
+          'Transportation',
+          'Saving and Debt Payments',
+          'Other',
+        ],
+        datasets: [{
+        label: '',
+        data: [{{ housing_percent }}, {{ food_percent }}, {{ transportation_percent }}, {{ saving_percent }}, {{ other_percent }}],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(24, 152, 135)',
+          'rgb(65, 25, 186)'
+        ]
+      }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+        },
+    };
+
+    function createBarGraph() {
+      // get the bar graph canvas element
+      var ctx = document.getElementById('barGraph').getContext('2d');
+
+      // create the bar graph using Chart.js
+      var barGraph = new Chart(ctx, config);
+    }
+
+    // call the function to create the bar graph
+    createBarGraph();
+    }
+</script>
+
+    <div id="barGraphContainer">
+    <canvas id="barGraph" style="width: 50%; height: 50%;"></canvas>
+    </div>
+
+
+
+
+{% endblock %}

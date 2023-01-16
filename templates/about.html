@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block main %}
+
+    <!-- Page with story of website and instructions to use it -->
+
+<div class="about">
+    <h4>What is Brandon's Coin Counter?</h4>
+    <p>Brandon's Coin Counter is a tool that users may leverage to better understand their monthly spending decisions.
+    It is designed so that users consciously think about where their money is going each month and visualize exactly what expenses are taking up what proportion of their monthly income.
+    With this information, users can make more informed decisions about their budget and potentially make changes to their spending habits to better meet their financial goals.
+    It is a Flask web application that makes use of Python, Javascript, HTML, and CSS.
+    </p>
+</div>
+
+<div class="about">
+    <h4>How does it do this?</h4>
+    <p>Brandon's Coin Counter accomplishes its goal of bettering the financial habits of its users through various means.
+        In addition to simply asking users to gather information in regard to their spending habits, once the information is entered, it can be visualized through two graphics.
+        First, it can be seen in the table, which shows the dollar amount of each expense and the percentage of the cost compared to the monthly income.
+        It is our hope that by having percentage figures, users can better understand which costs may be eating a disproportionate slice of their income.
+        Second, for users who prefer a more engaging graphic, we provide a pie chart that uses the percentages from before but also puts them in a visually appealing way to communicate to users the proportional dividing of their income by expense.
+        Beyond graphics, we provide users with suggestions, when applicable, in regard to shifting their spending proportions in ways that would better their financial health.
+        Additionally, with the Budget Builder feature, users can better decide whether certain changes to one aspect of their budget would fit a reasonable budget overall.
+        A table, again, and a bar graph are used to display a reasonable budget given the value of one of its aspects.
+        Finally, the Debt Planner feature allows users to input the cost of one debt item, its interest rate, and when they would like to pay it off. With such information, we provide the user with a recommended monthly payment and plan of repayment so that they can reach their goal.
+        Therefore, Brandon's Coin Counter comes with multiple tools to help users achieve their healthy financial goals.
+    </p>
+</div>
+
+<div class="about">
+    <h4>Who is Brandon's Coin Counter for?</h4>
+    <p>Everyone! Brandon's Coin Counter was created by a recent college graduate who is doing his best to live on a budget.
+        He thought it would be helpful to both examine past ways in which he would divide his income and experiment with new ways in which he could change his spending habits.
+        So Brandon's Coin Counter can be used by all kinds of people. These include people who are new to their financial journey, like Brandon, who are looking to understand the ways in which they should spend their money.
+        Brandon's Coin Counter is also designed for those much further along on their financial journey and looking for ways in which they can improve their spending habits.
+        Through an accessible and intuitive design, the hope is for Brandon's Coin Counter to be useful for all people and a powerful tool in guiding the future spending habits of its users.
+    </p>
+</div>
+
+<div class="about">
+    <h4>How to use Brandon's Coin Counter?</h4>
+    <p>Using Brandon's Coin Counter is simple! All the user must do is input some of their monthly financial information.
+        This includes their income and expenses such as housing, food, transportation, etc.
+        Once the calculate button is pressed, the user will be shown their table, pie chart, and suggestions that will all help better their financial habits.
+        In terms of the Budget Builder feature, the user must select an aspect of their monthly budget and the dollar value of such aspect.
+        Next, the user just has to press calculate, and Brandon's Coin Counter will present a recommended budget based on budget aspect percentages that we believe result in healthy budgeting.
+        Finally, the Debt Planner feature only requires the user to input the value of one debt item, its annual interest rate, and a timeframe for when the user would like to pay it off.
+        From there, it is up to the user to apply the presented information in the best way to inform their financial future.
+        This may mean setting spending goals or cutting overwhelming purchases out of their lives. Brandon's Coin Counter is designed to be the starting point, not the end.
+        Nonetheless, the possibilities are endless and users should feel empowered by what this tool can accomplish!
+    </p>
+</div>
+
+{% endblock %}

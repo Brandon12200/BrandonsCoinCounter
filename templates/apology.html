@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <h4>Error: {{ top | urlencode }}</h4>
+    <h4>{{ bottom | urlencode }}</h4>
+    <div style="display: flex; align-items: center;">
+        <img src="/static/lumn.jpg" style="margin: auto;" height="300" width="500">
+    </div>
+{% endblock %}
