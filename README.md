@@ -1,7 +1,7 @@
 
 # Brandon's Coin Counter
 
-[www.brandonscoincounter.com](www.brandonscoincounter.com)
+[www.brandonscoincounter.com](http://www.brandonscoincounter.com/)
 
 #### Description:
 
