@@ -3,9 +3,19 @@ body {
     color: #000000;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
 footer {
     background-color: #f3f3f3;
     color: #000000;
+    flex-shrink: 0;
   }
 
 nav {
@@ -35,9 +45,9 @@ h3, h4, h5{
   }
 
 .center {
-    display: flex; /* Create a flex container */
-    justify-content: center; /* Center the elements horizontally */
-    align-items: center; /* Center the elements vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 .center-button {
@@ -77,4 +87,10 @@ table {
 #barGraphContainer {
   width: 800px;
   transform: translateX(40%);
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
