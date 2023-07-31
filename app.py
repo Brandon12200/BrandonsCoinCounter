@@ -79,8 +79,7 @@ def home():
         # Returns view.html where relevent info is displayed
         return render_template("view.html", income=income, housing_percent=housing_percent, food_percent=food_percent, transportation_percent=transportation_percent, saving_percent=saving_percent, debt_payments_percent=debt_payments_percent, other_percent=other_percent,
         housing=housing, food=food, transportation=transportation, saving=saving, debt_payments=debt_payments, other=other)
-
-
+        
     else:
 
         # Bring user to home page, where they can input budget info
@@ -277,8 +276,7 @@ def debt():
 
         # Returns debt_view.html with useful information to fill in
         return render_template("debt_view.html", total_amount=total_amount, monthly_payment=monthly_payment, display_unit=display_unit, iteration=iteration, head_unit=head_unit, time=time, length=length)
-
-
+        
     else:
             # Returns debt.html when user first arrives to page
             return render_template("debt.html")
